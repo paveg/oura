@@ -25,6 +25,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   spec.add_dependency 'oauth2'
+  spec.add_development_dependency 'activesupport'
   spec.add_development_dependency 'bundler', '~> 1.17'
   spec.add_development_dependency 'codecov'
   spec.add_development_dependency 'danger'
@@ -39,4 +40,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rubocop'
   spec.add_development_dependency 'rubocop-rspec'
   spec.add_development_dependency 'simplecov'
+  spec.add_development_dependency 'vcr'
+  spec.add_development_dependency 'webmock'
 end
