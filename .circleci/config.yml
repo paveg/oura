@@ -5,7 +5,7 @@ defaults: &defaults
 executors:
   default_container:
     docker:
-      - image: circleci/ruby:2.6.0-node-browsers
+      - image: circleci/ruby:2.5.3-node-browsers
 commands:
   restore-and-save-cache:
     steps:
@@ -50,6 +50,11 @@ jobs:
                             --format RspecJunitFormatter \
                             --out $CIRCLE_ARTIFACTS/rspec.xml \
                             $TEST_FILES
+      - run:
+          name: Upload coverage
+          when: on_success
+          command: |
+            bash <(curl -fs https://codecov.io/bash) -t ${CODECOV_TOKEN}
       - store_test_results:
           path: ${CIRCLE_ARTIFACTS}
       - store_artifacts:

@@ -8,7 +8,7 @@
 /tmp/
 
 # rspec failure tracking
-.rspec_status
+spec/.rspec_status
 
 .idea
 .envrc

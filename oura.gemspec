@@ -14,7 +14,7 @@ Gem::Specification.new do |spec|
   spec.description   = 'unofficial API client of oura-cloud for ruby.'
   spec.homepage      = 'https://github.com/paveg/oura'
   spec.license       = 'MIT'
-  spec.required_ruby_version = '>= 2.6'
+  spec.required_ruby_version = '>= 2.5.3'
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
   spec.files = Dir.chdir(File.expand_path(__dir__)) do
@@ -36,4 +36,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rspec_junit_formatter'
   spec.add_development_dependency 'rubocop'
   spec.add_development_dependency 'rubocop-rspec'
+  spec.add_development_dependency 'simplecov'
+  spec.add_development_dependency 'codecov'
 end
