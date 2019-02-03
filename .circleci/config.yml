@@ -1,0 +1,84 @@
+defaults: &defaults
+  working_directory: ~/repo
+  environment:
+    - CIRCLE_ARTIFACTS: "/tmp/test-results"
+executors:
+  default_container:
+    docker:
+      - image: circleci/ruby:2.5.3-node-browsers
+commands:
+  restore-and-save-cache:
+    steps:
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "Gemfile" }}-{{ checksum "oura.gemspec" }}
+            - v1-dependencies-
+      - run:
+          name: install dependencies
+          command: |
+            bundle install --jobs=4 --quiet --retry=3 --path vendor/bundle
+      - save_cache:
+          paths:
+            - ./vendor/bundle
+          key: v1-dependencies-{{ checksum "Gemfile" }}-{{ checksum "oura.gemspec" }}
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .
+version: 2.1
+jobs:
+  prepare:
+    <<: *defaults
+    parallelism: 1
+    executor: default_container
+    steps:
+      - checkout
+      - restore-and-save-cache
+  rspec:
+    <<: *defaults
+    executor: default_container
+    steps:
+      - attach_workspace:
+          at: .
+      - restore-and-save-cache
+      - run:
+          name: Run tests
+          command: |
+            mkdir ${CIRCLE_ARTIFACTS}
+            TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)"
+            bundle exec rspec --format progress \
+                            --format RspecJunitFormatter \
+                            --out $CIRCLE_ARTIFACTS/rspec.xml \
+                            $TEST_FILES
+      - run:
+          name: Upload coverage
+          when: on_success
+          command: |
+            bash <(curl -fs https://codecov.io/bash) -t ${CODECOV_TOKEN}
+      - store_test_results:
+          path: ${CIRCLE_ARTIFACTS}
+      - store_artifacts:
+          path: ${CIRCLE_ARTIFACTS}
+          destination: test-results
+  danger:
+    <<: *defaults
+    executor: default_container
+    steps:
+      - attach_workspace:
+          at: .
+      - restore-and-save-cache
+      - run:
+          name: Run danger
+          command: |
+            bundle --path vendor/bundle --quiet
+            bundle exec danger --fail-on-errors=true
+workflows:
+  integration:
+    jobs:
+      - prepare
+      - rspec:
+          requires:
+            - prepare
+      - danger:
+          requires:
+            - prepare

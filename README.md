@@ -1,8 +1,11 @@
-# Oura
+Oura
+====
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/oura`. To experiment with that code, run `bin/console` for an interactive prompt.
+[![CircleCI](https://circleci.com/gh/paveg/oura.svg?style=svg&circle-token=510e032854535d58837e088b89650cc931ae12be)][circleci]
+[![codecov](https://codecov.io/gh/paveg/oura/branch/master/graph/badge.svg)][codecov]
 
-TODO: Delete this and the text above, and describe your gem
+[circleci]: https://circleci.com/gh/paveg/oura
+[codecov]: https://codecov.io/gh/paveg/oura
 
 ## Installation
 
