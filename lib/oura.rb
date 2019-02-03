@@ -1,4 +1,6 @@
-require "oura/version"
+# frozen_string_literal: true
+
+require 'oura/version'
 
 module Oura
   class Error < StandardError; end

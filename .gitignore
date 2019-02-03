@@ -12,3 +12,5 @@
 
 .idea
 .envrc
+vendor
+Gemfile.lock
