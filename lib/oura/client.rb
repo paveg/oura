@@ -7,18 +7,20 @@ require 'oura/apis/sleep_period'
 require 'oura/apis/readiness'
 
 module Oura
-  # Oura::Client is client class.
+  # ::Oura::Client is client class.
   class Client
-    include Oura::Apis::UserInformation
-    include Oura::Apis::SleepPeriod
-    include Oura::Apis::Activity
-    include Oura::Apis::Readiness
+    include ::Oura::Apis::UserInformation
+    include ::Oura::Apis::SleepPeriod
+    include ::Oura::Apis::Activity
+    include ::Oura::Apis::Readiness
 
     attr_reader :access_token, :oauth_client
 
+    # @param [String] access_token
+    # @return [Object<Oura::Client>]
     def initialize(access_token: nil)
       @oauth_client = OAuth2::Client.new(
-        ENV['OURA_CLIENT_ID'], ENV['OURA_CLIENT_SECRET'], Oura::Constants::OAUTH_OPTIONS
+        ENV['OURA_CLIENT_ID'], ENV['OURA_CLIENT_SECRET'], ::Oura::Constants::OAUTH_OPTIONS
       )
       @access_token = if ENV['DEVELOPMENT']
                         puts @oauth_client.auth_code.authorize_url(redirect_uri: ::Oura::Constants::CALLBACK_URI)
@@ -34,6 +36,8 @@ module Oura
 
     private
 
+    # @param [String] code
+    # @return [OAuth2::AccessToken]
     def token(code)
       @oauth_client.auth_code.get_token(
         code,

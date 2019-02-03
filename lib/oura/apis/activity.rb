@@ -19,7 +19,7 @@ module Oura
       # @return [OAuth2::Response]
       def activity(start_date:, end_date:)
         sdate, edate = [start_date, end_date].map { |date| transform_date(date) }
-        @access_token.get(REQUEST_PATH, params: { start: sdate, end: edate })
+        get(REQUEST_PATH, params: { start: sdate, end: edate })
       end
     end
   end

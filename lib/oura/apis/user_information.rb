@@ -18,7 +18,7 @@ module Oura
       # }
       # @return [OAuth2::Response]
       def userinfo
-        @access_token.get(REQUEST_PATH)
+        get(REQUEST_PATH)
       end
     end
   end

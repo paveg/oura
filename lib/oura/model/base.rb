@@ -2,5 +2,6 @@
 
 module Oura
   class Base
+    # TODO: Implementation
   end
 end

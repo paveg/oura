@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-RSpec.describe Oura::Client do
+RSpec.describe ::Oura::Client do
   let(:access_token) { 'test' }
 
   describe '#initialize' do

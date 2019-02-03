@@ -6,7 +6,7 @@ require 'oura/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'oura'
-  spec.version       = Oura::VERSION
+  spec.version       = ::Oura::VERSION
   spec.authors       = ['Ryota Ikezawa']
   spec.email         = ['pavegy@gmail.com']
 

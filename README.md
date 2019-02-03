@@ -29,7 +29,7 @@ Or install it yourself as:
 
 ```irb
 $ DEVELOPMENT=true bundle console
-$ client = Oura::Client.new(access_token: your_token)
+$ client = ::Oura::Client.new(access_token: your_token)
 $ # <input your code>
 $ response = client.user_info # or sleep_period, activity, readiness
 $ response.body
@@ -50,7 +50,7 @@ $ => "{\"weight\": 50, \"age\": 22, \"gender\": \"male\", \"email\": \"oura@exam
 
 ```bash
 $ bundle console
-$ > client = Oura::Client.new(access_token: <your token>)
+$ > client = ::Oura::Client.new(access_token: <your token>)
 $ > client.user_info # or sleep_period, activity, readiness
 ```
 
