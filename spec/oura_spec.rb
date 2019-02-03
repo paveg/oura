@@ -2,6 +2,6 @@
 
 RSpec.describe Oura do
   it 'has a version number' do
-    expect(Oura::VERSION).to be nil
+    expect(Oura::VERSION).to eq '0.1.0'
   end
 end
