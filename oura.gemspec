@@ -25,6 +25,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   spec.add_development_dependency 'bundler', '~> 1.17'
+  spec.add_development_dependency 'codecov'
   spec.add_development_dependency 'danger'
   spec.add_development_dependency 'danger-junit'
   spec.add_development_dependency 'danger-rubocop'
@@ -37,5 +38,4 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rubocop'
   spec.add_development_dependency 'rubocop-rspec'
   spec.add_development_dependency 'simplecov'
-  spec.add_development_dependency 'codecov'
 end
