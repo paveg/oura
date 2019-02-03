@@ -6,22 +6,29 @@ module Oura
   class Client
     attr_reader :access_token, :oauth_client
 
-    def initialize(redirect_uri: 'http://localhost:8080/oauth2/callback')
+    def initialize(access_token: nil)
       @oauth_client = OAuth2::Client.new(
         ENV['OURA_CLIENT_ID'],
         ENV['OURA_CLIENT_SECRET'],
         Oura::Constants::OAUTH_OPTIONS
       )
-      puts @oauth_client.auth_code.authorize_url(redirect_uri: redirect_uri)
-      puts 'Please, input your secret'
-      code = gets.chomp
-      @access_token = token(code, redirect_uri)
+
+      @access_token = if ENV['DEVELOPMENT']
+                        puts @oauth_client.auth_code.authorize_url(redirect_uri: ::Oura::Constants::CALLBACK_URL)
+                        puts 'Please, input your secret'
+                        code = gets.chomp
+                        token(code)
+                      else
+                        raise if access_token.nil?
+
+                        OAuth2::AccessToken.new(@oauth_client, access_token)
+                      end
     end
 
-    def token(code, redirect_uri)
+    def token(code)
       @oauth_client.auth_code.get_token(
         code,
-        redirect_uri: redirect_uri,
+        redirect_uri: ::Oura::Constants::CALLBACK_URL,
         headers: { 'Authorization' => "Bearer #{ENV['AUTHORIZE_HEADER_CODE']}" }
       )
     end
