@@ -29,7 +29,7 @@ Or install it yourself as:
 
 ```irb
 $ DEVELOPMENT=true bundle console
-$ client = Oura::Client.new(access_token: your_token)
+$ client = ::Oura::Client.new(access_token: your_token)
 $ # <input your code>
 $ response = client.user_info # or sleep_period, activity, readiness
 $ response.body
@@ -38,11 +38,26 @@ $ => "{\"weight\": 50, \"age\": 22, \"gender\": \"male\", \"email\": \"oura@exam
 
 ### not in develop-mode
 
+#### Set Environment
+
+|Environment|Explanation|
+|:---:|:---:|
+| `OURA_CLIENT_ID` | client id |
+| `OURA_CLEINT_SECRET` | client secret |
+| `AUTHORIZE_HEADER_CODE` | authrize header code |
+| `OURA_CALLBACK_URI` | callback uri |
+
+
 ```bash
 $ bundle console
-$ > client = Oura::Client.new(access_token: <your token>)
+$ > client = ::Oura::Client.new(access_token: <your token>)
 $ > client.user_info # or sleep_period, activity, readiness
 ```
+
+## References
+
+- [Official Site](https://ouraring.com/)
+- [API Document](https://cloud.ouraring.com/docs/)
 
 ## Development
 
