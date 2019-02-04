@@ -31,7 +31,7 @@ Or install it yourself as:
 $ DEVELOPMENT=true bundle console
 $ client = ::Oura::Client.new(access_token: your_token)
 $ # <input your code>
-$ response = client.user_info # or sleep_period, activity, readiness
+$ response = client.userinfo # or sleep_period, activity, readiness
 $ response.body
 $ => "{\"weight\": 50, \"age\": 22, \"gender\": \"male\", \"email\": \"oura@example.com\", \"user_id\": \"XXXXXXXX\", \"height\": 170, \"date\": \"2019-02-03\"}"
 ```
@@ -51,7 +51,7 @@ $ => "{\"weight\": 50, \"age\": 22, \"gender\": \"male\", \"email\": \"oura@exam
 ```bash
 $ bundle console
 $ > client = ::Oura::Client.new(access_token: <your token>)
-$ > client.user_info # or sleep_period, activity, readiness
+$ > client.userinfo # or sleep_period, activity, readiness
 ```
 
 ## References
