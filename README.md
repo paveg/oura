@@ -27,13 +27,12 @@ Or install it yourself as:
 
 ### in develop-mode
 
-```irb
-$ DEVELOPMENT=true bundle console
-$ client = ::Oura::Client.new(access_token: your_token)
-$ # <input your code>
-$ response = client.userinfo # or sleep_period, activity, readiness
-$ response.body
-$ => "{\"weight\": 50, \"age\": 22, \"gender\": \"male\", \"email\": \"oura@example.com\", \"user_id\": \"XXXXXXXX\", \"height\": 170, \"date\": \"2019-02-03\"}"
+```ruby
+# DEVELOPMENT=true bundle console
+client = ::Oura::Client.new(access_token: your_token)
+# input your code
+client.userinfo
+=> #<Oura::Model::UserInformation:0x00007fc2492e59d8>
 ```
 
 ### not in develop-mode
@@ -48,10 +47,23 @@ $ => "{\"weight\": 50, \"age\": 22, \"gender\": \"male\", \"email\": \"oura@exam
 | `OURA_CALLBACK_URI` | callback uri |
 
 
-```bash
-$ bundle console
-$ > client = ::Oura::Client.new(access_token: <your token>)
-$ > client.userinfo # or sleep_period, activity, readiness
+```ruby
+# bundle console
+client = ::Oura::Client.new(access_token: your_token)
+client.userinfo
+=> #<Oura::Model::UserInformation:0x00007fc2492e59d8
+ @attrs=
+  {:weight=>64,
+   :age=>27,
+   :gender=>"male",
+   :email=>"example@gmail.com",
+   :user_id=>"XXXXXX",
+   :height=>170,
+   :date=>"2019-02-03"}>
+
+# client.sleep_period(start_date: 2.days.ago, end_date: Date.doday)
+# client.activity(start_date: 2.days.ago, end_date: Date.doday)
+# client.readiness(start_date: 2.days.ago, end_date: Date.doday)
 ```
 
 ## References
