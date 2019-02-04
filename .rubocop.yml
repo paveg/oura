@@ -22,3 +22,9 @@ Metrics/MethodLength:
 
 RSpec/MultipleExpectations:
   Enabled: false
+
+Style/DoubleNegation:
+  Enabled: false
+
+RSpec/NamedSubject:
+  Enabled: false

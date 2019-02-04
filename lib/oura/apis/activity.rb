@@ -12,14 +12,17 @@ module Oura
 
       # @param [Date] start_date
       # @param [Date] end_date
-      # @example
+      # @example response body
       # {
       #   "activity": [{"summary_date": "2016-10-11", ...}, {"summary_date": "2016-10-12", ...}, ...]
       # }
-      # @return [OAuth2::Response]
+      # @return [Oura::Model::Activity]
       def activity(start_date:, end_date:)
         sdate, edate = [start_date, end_date].map { |date| transform_date(date) }
-        get(REQUEST_PATH, params: { start: sdate, end: edate })
+        response_body = get(REQUEST_PATH, params: { start: sdate, end: edate }).body
+        symbolized_json = JSON.parse(response_body).deep_symbolize_keys
+
+        ::Oura::Model::Activity.new(symbolized_json)
       end
     end
   end
