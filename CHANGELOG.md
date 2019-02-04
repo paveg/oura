@@ -1,6 +1,15 @@
 Change Log
 ===
 
+## v0.1.3
+
+- Add Model
+
+  - Oura::Model::UserInformation
+  - Oura::Model::SleepPeriod
+  - Oura::Model::Activity
+  - Oura::Model::Readiness
+
 ## v0.1.2
 
 - Capsulize ( Add apis module )
