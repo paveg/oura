@@ -1,5 +1,10 @@
 Change Log
-===
+==========
+
+## v0.1.4
+
+- Add scores and score_resting_hrs
+- Add Readiness model spec
 
 ## v0.1.3
 
