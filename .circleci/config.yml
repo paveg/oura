@@ -2,7 +2,6 @@ defaults: &defaults
   working_directory: ~/repo
   environment:
     - CIRCLE_ARTIFACTS: "/tmp/test-results"
-    - BUNDLER_VERSION: 2.0.1
 executors:
   default_container:
     docker:
@@ -12,7 +11,7 @@ commands:
     steps:
       - restore_cache:
           keys:
-            - v1-dependencies-{{ checksum "oura.gemspec" }}
+            - v1-dependencies-{{ checksum "Gemfile" }}-{{ checksum "oura.gemspec" }}
             - v1-dependencies-
       - run:
           name: install dependencies
@@ -21,7 +20,7 @@ commands:
       - save_cache:
           paths:
             - ./vendor/bundle
-          key: v1-dependencies-{{ checksum "oura.gemspec" }}
+          key: v1-dependencies-{{ checksum "Gemfile" }}-{{ checksum "oura.gemspec" }}
       - persist_to_workspace:
           root: .
           paths:

@@ -26,7 +26,6 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'oauth2'
   spec.add_development_dependency 'activesupport'
-  spec.add_development_dependency 'bundler', '~> 2.0'
   spec.add_development_dependency 'codecov'
   spec.add_development_dependency 'danger'
   spec.add_development_dependency 'danger-junit'
