@@ -17,7 +17,7 @@ module Oura
       #   "sleep": [{"summary_date": "2016-10-11", ...}, {"summary_date": "2016-10-12", ...}, ...]
       # }
       # @return [Oura::Model::SleepPeriod]
-      def sleep_period(start_date:, end_date:)
+      def sleep_period(start_date:, end_date: Time.current.to_date)
         sdate, edate = [start_date, end_date].map { |date| transform_date(date) }
         response_body = get(REQUEST_PATH, params: { start: sdate, end: edate }).body
         symbolized_json = JSON.parse(response_body).deep_symbolize_keys
