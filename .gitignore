@@ -14,3 +14,4 @@ spec/.rspec_status
 .envrc
 vendor
 Gemfile.lock
+.ruby-version
