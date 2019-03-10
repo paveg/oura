@@ -1,0 +1,28 @@
+{
+  "readiness": [
+    {
+      "score_activity_balance": 60,
+      "score_resting_hr": 78,
+      "score": 70,
+      "period_id": 0,
+      "score_temperature": 97,
+      "score_sleep_balance": 67,
+      "summary_date": "2019-03-08",
+      "score_previous_day": 74,
+      "score_previous_night": 55,
+      "score_recovery_index": 100
+    },
+    {
+      "score_activity_balance": 60,
+      "score_resting_hr": 78,
+      "score": 62,
+      "period_id": 0,
+      "score_temperature": 100,
+      "score_sleep_balance": 65,
+      "summary_date": "2019-03-09",
+      "score_previous_day": 81,
+      "score_previous_night": 45,
+      "score_recovery_index": 37
+    }
+  ]
+}
