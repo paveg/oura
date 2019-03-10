@@ -2,6 +2,7 @@ defaults: &defaults
   working_directory: ~/repo
   environment:
     - CIRCLE_ARTIFACTS: "/tmp/test-results"
+    - BUNDLER_VERSION: 2.0.1
 executors:
   default_container:
     docker:
