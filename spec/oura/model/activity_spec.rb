@@ -1,0 +1,18 @@
+# frozen_string_literal: true
+
+require 'spec_helper'
+
+RSpec.describe ::Oura::Model::Activity do
+  let(:argument_file) { 'spec/fixtures/activity.json' }
+  let(:arguments) { JSON.parse(File.read(argument_file)).deep_symbolize_keys }
+  let(:activity) { described_class.new(arguments) }
+
+  describe '#initialize' do
+    subject { activity }
+
+    it do
+      expect(subject.instance_variable_get(:@attrs).keys).to eq(arguments.keys)
+      expect(subject).to be_a(described_class)
+    end
+  end
+end

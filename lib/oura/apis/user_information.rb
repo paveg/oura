@@ -6,7 +6,7 @@ module Oura
   module Apis
     # UserInformation is user information.
     module UserInformation
-      include ::Oura::Api
+      include ::Oura::Utils::Api
 
       REQUEST_PATH = '/v1/userinfo'
       # @example response body

@@ -6,7 +6,7 @@ module Oura
   module Apis
     # Activity summary contains daily activity summary values and detailed activity levels.
     module Activity
-      include ::Oura::Api
+      include ::Oura::Utils::Api
 
       REQUEST_PATH = '/v1/activity'
 

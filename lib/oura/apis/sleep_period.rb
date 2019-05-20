@@ -6,7 +6,7 @@ module Oura
   module Apis
     # SleepPeriod is a nearly continuous, longish period of time spent lying down in bed.
     module SleepPeriod
-      include ::Oura::Api
+      include ::Oura::Utils::Api
 
       REQUEST_PATH = '/v1/sleep'
 
