@@ -21,7 +21,7 @@ module Oura
     #     }
     # }
     module Readiness
-      include ::Oura::Api
+      include ::Oura::Utils::Api
 
       REQUEST_PATH = '/v1/readiness'
 

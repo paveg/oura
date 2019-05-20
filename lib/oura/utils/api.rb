@@ -1,25 +1,27 @@
 # frozen_string_literal: true
 
 module Oura
-  # ::Oura::Api is utility api module.
-  module Api
-    private
+  module Utils
+    # ::Oura::Utils::Api is utility api module.
+    module Api
+      private
 
-    # @param [<String>] date
-    # @param [<Date>] date
-    # @return [String] date string
-    def transform_date(date)
-      return Date.parse(date).strftime('%Y-%m-%d') if date.is_a?(String)
-      return date.strftime('%Y-%m-%d') if date.is_a?(Date)
+      # @param [<String>] date
+      # @param [<Date>] date
+      # @return [String] date string
+      def transform_date(date)
+        return Date.parse(date).strftime('%Y-%m-%d') if date.is_a?(String)
+        return date.strftime('%Y-%m-%d') if date.is_a?(Date)
 
-      raise ArgumentError, 'invalid date'
-    end
+        raise ArgumentError, 'invalid date'
+      end
 
-    # @param [String] path
-    # @param [Hash] params
-    # @return [OAuth2::Response]
-    def get(path, params = {})
-      @access_token.get(path, params)
+      # @param [String] path
+      # @param [Hash] params
+      # @return [OAuth2::Response]
+      def get(path, params = {})
+        @access_token.get(path, params)
+      end
     end
   end
 end
