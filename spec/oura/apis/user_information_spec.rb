@@ -7,8 +7,6 @@ RSpec.describe ::Oura::Apis::UserInformation do
     include ::Oura::Apis::UserInformation
   end
   let(:instance) { TestApisUserInformation.new }
-  let(:start_date) { Date.new(2019, 5, 1) }
-  let(:end_date) { Date.new(2019, 5, 2) }
 
   describe '#userinfo' do
     subject { instance.userinfo }
