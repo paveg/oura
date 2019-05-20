@@ -20,6 +20,8 @@ module Oura
       # @param [Hash] params
       # @return [OAuth2::Response]
       def get(path, params = {})
+        raise StandardError, 'Not found access_token' if @access_token.nil?
+
         @access_token.get(path, params)
       end
     end
