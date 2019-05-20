@@ -1,0 +1,41 @@
+{
+  "extends": [
+    "config:base"
+  ],
+  "labels": [
+    "renovate"
+  ],
+  "assignees": [
+    "paveg"
+  ],
+  "separateMultipleMajor": true,
+  "major": {
+    "automerge": false,
+    "labels": [
+      "major",
+      "renovate"
+    ]
+  },
+  "minor": {
+    "groupName": "all minor dependencies",
+    "automerge": true,
+    "labels": [
+      "minor",
+      "renovate"
+    ]
+  },
+  "patch": {
+    "groupName": "all patch dependencies",
+    "automerge": true,
+    "labels": [
+      "patch",
+      "renovate"
+    ]
+  },
+  "pin": {
+    "automerge": true
+  },
+  "lockFileMaintenance": {
+    "automerge": true
+  }
+}
