@@ -8,6 +8,9 @@
   "assignees": [
     "paveg"
   ],
+  "docker": {
+    "enabled": false
+  },
   "separateMultipleMajor": true,
   "major": {
     "automerge": false,
