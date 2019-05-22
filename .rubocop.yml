@@ -28,3 +28,6 @@ Style/DoubleNegation:
 
 RSpec/NamedSubject:
   Enabled: false
+
+RSpec/MessageChain:
+  Enabled: false
