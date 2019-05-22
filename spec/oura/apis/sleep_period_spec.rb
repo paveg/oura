@@ -7,6 +7,8 @@ RSpec.describe ::Oura::Apis::SleepPeriod do
     include ::Oura::Apis::SleepPeriod
   end
   let(:instance) { TestApisSleepPeriod.new }
+  let(:argument_file) { 'spec/fixtures/sleep_period.json' }
+  let(:expected_body) { File.read(argument_file) }
   let(:start_date) { Date.new(2019, 5, 1) }
   let(:end_date) { Date.new(2019, 5, 2) }
 
@@ -18,7 +20,9 @@ RSpec.describe ::Oura::Apis::SleepPeriod do
     end
 
     context 'when access_token is present' do
-      xit {}
+      before { allow(instance).to receive_message_chain(:get, :body).and_return(expected_body) }
+
+      it { is_expected.to be_a(::Oura::Model::SleepPeriod) }
     end
   end
 end

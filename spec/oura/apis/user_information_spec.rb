@@ -7,6 +7,8 @@ RSpec.describe ::Oura::Apis::UserInformation do
     include ::Oura::Apis::UserInformation
   end
   let(:instance) { TestApisUserInformation.new }
+  let(:argument_file) { 'spec/fixtures/user_information.json' }
+  let(:expected_body) { File.read(argument_file) }
 
   describe '#userinfo' do
     subject { instance.userinfo }
@@ -16,7 +18,9 @@ RSpec.describe ::Oura::Apis::UserInformation do
     end
 
     context 'when access_token is present' do
-      xit {}
+      before { allow(instance).to receive_message_chain(:get, :body).and_return(expected_body) }
+
+      it { is_expected.to be_a(::Oura::Model::UserInformation) }
     end
   end
 end
