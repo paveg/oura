@@ -2,9 +2,9 @@ Oura
 ====
 
 [![Gem Version](https://badge.fury.io/rb/oura.svg)][rubygem]
+[![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)][license]
 [![CircleCI](https://circleci.com/gh/paveg/oura.svg?style=svg&circle-token=510e032854535d58837e088b89650cc931ae12be)][circleci]
 [![Codecov](https://codecov.io/gh/paveg/oura/branch/master/graph/badge.svg)][codecov]
-[![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)][license]
 [![Renovate](https://badges.renovateapi.com/github/paveg/oura)][renovate]
 
 [circleci]: https://circleci.com/gh/paveg/oura
@@ -49,7 +49,7 @@ client.userinfo
 |:---:|:---:|
 | `OURA_CLIENT_ID` | client id |
 | `OURA_CLEINT_SECRET` | client secret |
-| `AUTHORIZE_HEADER_CODE` | authrize header code |
+| `AUTHORIZE_HEADER_CODE` | authorize header code |
 | `OURA_CALLBACK_URI` | callback uri |
 
 

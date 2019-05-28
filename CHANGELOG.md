@@ -1,6 +1,14 @@
 Change Log
 ==========
 
+## v0.1.5
+
+- Add RSpecs
+  - Apis
+  - Model
+  - Utils
+- Update README.md
+
 ## v0.1.4
 
 - Add scores and score_resting_hrs
