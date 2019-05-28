@@ -1,6 +1,7 @@
 Oura
 ====
 
+[![Gem Version](https://badge.fury.io/rb/oura.svg)][rubygem]
 [![CircleCI](https://circleci.com/gh/paveg/oura.svg?style=svg&circle-token=510e032854535d58837e088b89650cc931ae12be)][circleci]
 [![Codecov](https://codecov.io/gh/paveg/oura/branch/master/graph/badge.svg)][codecov]
 [![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)][license]
@@ -10,6 +11,7 @@ Oura
 [codecov]: https://codecov.io/gh/paveg/oura
 [license]: https://github.com/paveg/oura/blob/master/LICENSE
 [renovate]: https://github.com/renovatebot/renovate
+[rubygem]: https://badge.fury.io/rb/oura
 
 ## Installation
 
