@@ -101,7 +101,7 @@ jobs:
           command: |
             old_tag=$(git describe --tags @^ | tr "-" " " | awk '{print $1}')
             new_tag=$(git describe --tags)
-            title_link="https://github.com/paveg/oura/${old_tag}...${new_tag}"
+            title_link="https://github.com/paveg/oura/compare/${old_tag}...${new_tag}"
             echo "export TITLE_LINK=$title_link" >> $BASH_ENV
             echo "export NTF_MSG=\":+1: Bump up $old_tag to $new_tag\"" >> $BASH_ENV
       - notify-slack:

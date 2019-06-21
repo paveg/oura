@@ -1,6 +1,10 @@
 Change Log
 ==========
 
+## v0.1.8
+
+- Little CI fixes
+
 ## v0.1.7
 
 - Fix up Slack notification configuration
