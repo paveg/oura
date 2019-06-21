@@ -1,6 +1,14 @@
 Change Log
 ==========
 
+## v0.1.7
+
+- Fix up Slack notification configuration
+
+## v0.1.6
+
+- Add Slack notification from own workspace
+
 ## v0.1.5
 
 - Add RSpecs

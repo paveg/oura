@@ -96,8 +96,16 @@ jobs:
     executor: default_container
     steps:
       - checkout
+      - run:
+          name: shared tag
+          command: |
+            old_tag=$(git describe --tags @^ | tr "-" " " | awk '{print $1}')
+            new_tag=$(git describe --tags)
+            title_link="https://github.com/paveg/oura/${old_tag}...${new_tag}"
+            echo "export TITLE_LINK=$title_link" >> $BASH_ENV
+            echo "export NTF_MSG=\":+1: Bump up $old_tag to $new_tag\"" >> $BASH_ENV
       - notify-slack:
-          message: ":+1: released"
+          message: $NTF_MSG
           author_link: $TITLE_LINK
 workflows:
   integration:
