@@ -36,12 +36,12 @@ commands:
         type: string
         default: "$CIRCLE_JOB"
       author_link:
-	    type: string
-	    default: ""
+        type: string
+        default: ""
     steps:
       - slack/notify:
           author_name: "Release Link"
-	      author_link: << parameters.author_link >>
+          author_link: << parameters.author_link >>
           color: "good"
           message: << parameters.message >>
           title: << parameters.title >>
@@ -55,16 +55,6 @@ jobs:
     steps:
       - checkout
       - restore-and-save-cache
-    run:
-      name: shared tag
-      command: |
-        old_tag=$(git describe --tags @^ | tr "-" " " | awk '{print $1}')
-        new_tag=$(git describe --tags)
-        title_link="https://github.com/paveg/oura/${old_tag}...${new_tag}"
-        echo 'export TITLE_LINK="$title_link"' >> $BASH_ENV
-    notify-slack:
-      message: ":+1: succeeded"
-      author_link: $TITLE_LINK
   rspec:
     <<: *defaults
     executor: default_container
@@ -101,6 +91,14 @@ jobs:
           name: Run danger
           command: |
             bundle exec danger --fail-on-errors=true
+  notify-release:
+    <<: *defaults
+    executor: default_container
+    steps:
+      - checkout
+      - notify-slack:
+          message: ":+1: released"
+          author_link: $TITLE_LINK
 workflows:
   integration:
     jobs:
@@ -111,3 +109,11 @@ workflows:
       - danger:
           requires:
             - prepare
+  released:
+    jobs:
+      - notify-release:
+          filters:
+            tags:
+              only: /^v\d+\.\d+\.\d+$/
+            branches:
+              ignore: /.*/
