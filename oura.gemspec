@@ -34,6 +34,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'pry-byebug'
   spec.add_development_dependency 'pry-doc'
   spec.add_development_dependency 'rake', '~> 12.0'
+  spec.add_development_dependency 'rb-readline'
   spec.add_development_dependency 'rspec', '~> 3.8'
   spec.add_development_dependency 'rspec_junit_formatter'
   spec.add_development_dependency 'rubocop'
