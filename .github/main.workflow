@@ -1,5 +1,5 @@
 workflow "Create Release Draft" {
-  resolves = ["toolmantim/release-drafter@v5.2.0"]
+  resolves = ["Release Draft"]
   on = "push"
 }
 
