@@ -5,11 +5,9 @@ jobs:
     runs-on: ubuntu-18.04
     strategy:
       matrix:
-        ruby_version: [2.5.5, 2.6.3, 2.7.0-preview1]
+        ruby_version: [2.5, 2.6]
     steps:
     - uses: actions/checkout@master
-      env:
-        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
     - name: Set up Ruby ${{ matrix.ruby_version }}
       uses: actions/setup-ruby@v1
       with:
@@ -19,6 +17,3 @@ jobs:
         gem install bundler
         bundle install --jobs 4 --retry 3
         bundle exec rspec --format progress --format RspecJunitFormatter
-    - name: Upload coverage
-      run: |
-        command: bash <(curl -fs https://codecov.io/bash) -t ${CODECOV_TOKEN}
