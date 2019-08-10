@@ -1,0 +1,12 @@
+on: push
+name: Create Release Draft
+jobs:
+  releaseDraft:
+    name: Release Draft
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Release Draft
+      uses: toolmantim/release-drafter@v5.2.0
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
