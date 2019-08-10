@@ -2,8 +2,6 @@ defaults: &defaults
   working_directory: ~/repo
   environment:
     - CIRCLE_ARTIFACTS: "/tmp/test-results"
-orbs:
-  slack: circleci/slack@3.2.0
 executors:
   default_container:
     docker:
@@ -27,25 +25,6 @@ commands:
           root: .
           paths:
             - .
-  notify-slack:
-    parameters:
-      message:
-        type: string
-        default: ""
-      title:
-        type: string
-        default: "$CIRCLE_JOB"
-      author_link:
-        type: string
-        default: ""
-    steps:
-      - slack/notify:
-          author_name: "Release Link"
-          author_link: << parameters.author_link >>
-          color: "good"
-          message: << parameters.message >>
-          title: << parameters.title >>
-          webhook: $SLACK_WEBHOOK_URL
 version: 2.1
 jobs:
   prepare:
@@ -91,22 +70,6 @@ jobs:
           name: Run danger
           command: |
             bundle exec danger --fail-on-errors=true
-  notify-release:
-    <<: *defaults
-    executor: default_container
-    steps:
-      - checkout
-      - run:
-          name: shared tag
-          command: |
-            old_tag=$(git describe --tags @^ | tr "-" " " | awk '{print $1}')
-            new_tag=$(git describe --tags)
-            title_link="https://github.com/paveg/oura/compare/${old_tag}...${new_tag}"
-            echo "export TITLE_LINK=$title_link" >> $BASH_ENV
-            echo "export NTF_MSG=\":+1: Bump up $old_tag to $new_tag\"" >> $BASH_ENV
-      - notify-slack:
-          message: $NTF_MSG
-          author_link: $TITLE_LINK
 workflows:
   integration:
     jobs:
@@ -117,11 +80,3 @@ workflows:
       - danger:
           requires:
             - prepare
-  released:
-    jobs:
-      - notify-release:
-          filters:
-            tags:
-              only: /^v\d+\.\d+\.\d+$/
-            branches:
-              ignore: /.*/
