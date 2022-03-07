@@ -5,7 +5,7 @@ defaults: &defaults
 executors:
   default_container:
     docker:
-      - image: circleci/ruby:2.6.3-node-browsers
+      - image: circleci/ruby:3.0.3-node-browsers
 commands:
   restore-and-save-cache:
     steps:
